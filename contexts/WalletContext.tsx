@@ -62,7 +62,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
     } catch (error) {
       console.error('Error loading wallets:', error);
     }
-  }, []);
+  }, [settings.theme]);
 
   // Load initial settings
   useEffect(() => {
@@ -70,7 +70,7 @@ export const WalletProvider = ({ children }: { children: React.ReactNode }) => {
       document.documentElement.classList.remove('light', 'dark');
       document.documentElement.classList.add(settings.theme);
     }
-  }, []);
+  }, [settings.theme]);
 
   const addWallet = (wallet: Wallet) => {
     try {
