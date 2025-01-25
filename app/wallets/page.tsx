@@ -16,59 +16,79 @@ export default function Wallets() {
 
   return (
     <div className="ml-64 p-8">
-      <h1 className="text-2xl font-bold mb-8">My Wallets</h1>
+      <h1 className="text-2xl font-bold mb-8 text-[var(--text-primary)]">My Wallets</h1>
       
       <div className="grid grid-cols-1 gap-6">
         {wallets.map(wallet => (
-          <div key={wallet.id} className="bg-[#111111] rounded-xl p-6">
-            <div className="flex items-center gap-3 mb-4">
+          <div key={wallet.id} className="card rounded-xl p-6 hover:border-blue-400/30 transition-all duration-200">
+            <div className="flex items-center gap-3 mb-6">
               <Image 
                 src={`/images/${wallet.type}-logo.svg`}
                 alt={wallet.type}
-                width={24}
-                height={24}
+                width={28}
+                height={28}
+                className="rounded-full bg-[var(--background-secondary)] p-1"
               />
-              <h2 className="text-xl font-bold capitalize">{wallet.type} Wallet</h2>
+              <h2 className="text-xl font-bold capitalize text-[var(--text-primary)]">
+                {wallet.type} Wallet
+              </h2>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-5">
+              {/* Wallet ID */}
               <div>
-                <label className="text-gray-400 text-sm">Wallet ID:</label>
-                <p className="font-mono bg-[#1a1a1a] p-2 rounded mt-1">{wallet.id}</p>
+                <label className="text-[var(--text-secondary)] text-sm font-medium mb-1 block">
+                  Wallet ID
+                </label>
+                <p className="font-mono bg-[var(--input-background)] p-3 rounded-lg border border-[var(--border-color)]">
+                  {wallet.id}
+                </p>
               </div>
 
+              {/* Public Key */}
               <div>
-                <label className="text-gray-400 text-sm">Public Key:</label>
-                <p className="font-mono bg-[#1a1a1a] p-2 rounded mt-1 break-all">
+                <label className="text-[var(--text-secondary)] text-sm font-medium mb-1 block">
+                  Public Key
+                </label>
+                <p className="font-mono bg-[var(--input-background)] p-3 rounded-lg border border-[var(--border-color)] break-all">
                   {wallet.publicKey}
                 </p>
               </div>
 
+              {/* Private Key */}
               <div>
-                <label className="text-gray-400 text-sm">Private Key:</label>
+                <label className="text-[var(--text-secondary)] text-sm font-medium mb-1 block">
+                  Private Key
+                </label>
                 <div className="relative">
-                  <p className="font-mono bg-[#1a1a1a] p-2 rounded mt-1 break-all">
+                  <p className="font-mono bg-[var(--input-background)] p-3 rounded-lg border border-[var(--border-color)] break-all">
                     {showPrivateKey[wallet.id] ? wallet.privateKey : '••••••••••••••••'}
                   </p>
                   <button
                     onClick={() => togglePrivateKey(wallet.id)}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 text-sm text-blue-400 hover:text-blue-300"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 px-3 py-1 text-sm bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
                   >
                     {showPrivateKey[wallet.id] ? 'Hide' : 'Show'}
                   </button>
                 </div>
               </div>
 
+              {/* Balance */}
               <div>
-                <label className="text-gray-400 text-sm">Balance:</label>
-                <p className="font-mono bg-[#1a1a1a] p-2 rounded mt-1">
+                <label className="text-[var(--text-secondary)] text-sm font-medium mb-1 block">
+                  Balance
+                </label>
+                <p className="font-mono bg-[var(--input-background)] p-3 rounded-lg border border-[var(--border-color)]">
                   {wallet.balance} {wallet.type === 'solana' ? 'SOL' : 'ETH'}
                 </p>
               </div>
 
+              {/* Created Date */}
               <div>
-                <label className="text-gray-400 text-sm">Created:</label>
-                <p className="font-mono bg-[#1a1a1a] p-2 rounded mt-1">
+                <label className="text-[var(--text-secondary)] text-sm font-medium mb-1 block">
+                  Created
+                </label>
+                <p className="font-mono bg-[var(--input-background)] p-3 rounded-lg border border-[var(--border-color)]">
                   {new Date(wallet.createdAt).toLocaleString()}
                 </p>
               </div>
@@ -77,8 +97,8 @@ export default function Wallets() {
         ))}
 
         {wallets.length === 0 && (
-          <div className="text-center py-12 bg-[#111111] rounded-xl">
-            <p className="text-gray-400">No wallets created yet</p>
+          <div className="text-center py-16 card rounded-xl">
+            <p className="text-[var(--text-secondary)] text-lg">No wallets created yet</p>
           </div>
         )}
       </div>

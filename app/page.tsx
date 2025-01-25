@@ -112,9 +112,14 @@ export default function Home() {
               )}
             </div>
           ) : (
-            <div className="mb-4 p-4 bg-green-800/20 rounded">
-              <p className="text-green-400">Secret phrase is set and locked</p>
-              <p className="mt-2 text-sm text-gray-400">Your phrase: {secretPhrase}</p>
+            <div className="mb-4 p-4 bg-[var(--card-background)] rounded border border-[var(--border-color)]">
+              <p className="text-emerald-500 font-semibold flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 116 0z" clipRule="evenodd" />
+                </svg>
+                Secret phrase is set and locked
+              </p>
+              <p className="mt-2 text-sm text-[var(--text-secondary)]">Your phrase: {secretPhrase}</p>
             </div>
           )}
 

@@ -24,13 +24,13 @@ export default function History() {
 
   return (
     <div className="ml-64 p-8">
-      <h1 className="text-2xl font-bold mb-8">Transaction History</h1>
+      <h1 className="text-2xl font-bold mb-8 text-[var(--text-primary)]">Transaction History</h1>
 
       <div className="mb-6">
         <select
           value={selectedWallet}
           onChange={(e) => setSelectedWallet(e.target.value)}
-          className="bg-[#111111] border border-gray-800 rounded-lg px-4 py-2"
+          className="bg-[var(--input-background)] border border-[var(--border-color)] rounded-lg px-4 py-2 text-[var(--text-primary)] w-64"
         >
           <option value="all">All Wallets</option>
           {wallets.map(wallet => (
@@ -45,29 +45,49 @@ export default function History() {
         {transactions
           .filter(tx => selectedWallet === 'all' || tx.walletId === selectedWallet)
           .map(tx => (
-            <div key={tx.id} className="bg-[#111111] p-4 rounded-xl flex items-center justify-between">
+            <div key={tx.id} 
+              className="card rounded-xl p-4 flex items-center justify-between hover:border-blue-400/30 transition-all duration-200"
+            >
               <div className="flex items-center gap-4">
-                <div className={`p-2 rounded-full ${tx.type === 'send' ? 'bg-red-500/20' : 'bg-green-500/20'}`}>
+                <div className={`p-2 rounded-full ${
+                  tx.type === 'send' 
+                    ? 'bg-red-500/10 text-red-500' 
+                    : 'bg-green-500/10 text-green-500'
+                }`}>
                   {tx.type === 'send' ? 
-                    <ArrowUpRight className="text-red-500" /> : 
-                    <ArrowDownLeft className="text-green-500" />
+                    <ArrowUpRight className="w-5 h-5" /> : 
+                    <ArrowDownLeft className="w-5 h-5" />
                   }
                 </div>
                 <div>
-                  <p className="font-medium capitalize">{tx.type}</p>
-                  <p className="text-sm text-gray-400">{tx.address}</p>
+                  <p className="font-medium capitalize text-[var(--text-primary)]">
+                    {tx.type}
+                  </p>
+                  <p className="text-sm text-[var(--text-secondary)] font-mono">
+                    {tx.address}
+                  </p>
                 </div>
               </div>
               <div className="text-right">
-                <p className="font-medium">
+                <p className={`font-medium ${
+                  tx.type === 'send' ? 'text-red-500' : 'text-green-500'
+                }`}>
                   {tx.type === 'send' ? '-' : '+'}{tx.amount} {tx.currency}
                 </p>
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-[var(--text-secondary)]">
                   {new Date(tx.timestamp).toLocaleString()}
                 </p>
               </div>
             </div>
           ))}
+
+        {transactions.length === 0 && (
+          <div className="text-center py-16 card rounded-xl">
+            <p className="text-[var(--text-secondary)] text-lg">
+              No transactions found
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );
