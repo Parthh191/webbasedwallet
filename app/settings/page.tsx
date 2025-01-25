@@ -56,7 +56,7 @@ export default function Settings() {
               <select
                 value={currency}
                 onChange={(e) => setCurrency(e.target.value)}
-                className="bg-[#1a1a1a] border border-gray-800 rounded w-full p-2"
+                className="w-full p-2 rounded border bg-[var(--input-background)] border-[var(--border-color)]"
               >
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>
@@ -69,7 +69,7 @@ export default function Settings() {
               <select
                 value={theme}
                 onChange={(e) => setTheme(e.target.value)}
-                className="bg-[#1a1a1a] border border-gray-800 rounded w-full p-2"
+                className="w-full p-2 rounded border bg-[var(--input-background)] border-[var(--border-color)]"
               >
                 <option value="dark">Dark</option>
                 <option value="light">Light</option>
@@ -81,7 +81,7 @@ export default function Settings() {
               <select
                 value={autoLock}
                 onChange={(e) => setAutoLock(e.target.value)}
-                className="bg-[#1a1a1a] border border-gray-800 rounded w-full p-2"
+                className="w-full p-2 rounded border bg-[var(--input-background)] border-[var(--border-color)]"
               >
                 <option value="1">1 minute</option>
                 <option value="5">5 minutes</option>
@@ -97,8 +97,10 @@ export default function Settings() {
           <div className="space-y-4">
             <div>
               <label className="block text-sm text-gray-400 mb-2">Secret Recovery Phrase</label>
-              <div className="bg-[#1a1a1a] p-4 rounded border border-gray-800">
-                <p className="font-mono text-sm break-all">{secretPhrase || 'Not set'}</p>
+              <div className="p-4 rounded border bg-[var(--input-background)] border-[var(--border-color)]">
+                <p className="font-mono text-sm break-all text-[var(--text-primary)]">
+                  {secretPhrase || <span className="text-[var(--text-secondary)]">Not set</span>}
+                </p>
               </div>
             </div>
           </div>
