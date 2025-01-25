@@ -59,21 +59,21 @@ export default function Home() {
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-          <div className="bg-[#111111] p-6 rounded-xl">
+          <div className="bg-[var(--card-background)] p-6 rounded-xl border border-[var(--border-color)]">
             <h3 className="text-lg font-semibold mb-2">Total Balance</h3>
             <p className="text-2xl font-bold">${totalBalance.toFixed(2)}</p>
           </div>
-          <div className="bg-[#111111] p-6 rounded-xl">
+          <div className="bg-[var(--card-background)] p-6 rounded-xl border border-[var(--border-color)]">
             <h3 className="text-lg font-semibold mb-2">Active Wallets</h3>
             <p className="text-2xl font-bold">{wallets.length}</p>
           </div>
-          <div className="bg-[#111111] p-6 rounded-xl">
+          <div className="bg-[var(--card-background)] p-6 rounded-xl border border-[var(--border-color)]">
             <h3 className="text-lg font-semibold mb-2">Networks</h3>
             <p className="text-2xl font-bold">{uniqueNetworks}</p>
           </div>
         </div>
 
-        <div className="bg-[#111111] rounded-xl p-6">
+        <div className="bg-[var(--card-background)] rounded-xl p-6 border border-[var(--border-color)]">
           <h2 className="text-xl font-bold mb-4">Create New Wallet</h2>
           
           {!hasExistingPhrase ? (
@@ -85,7 +85,7 @@ export default function Home() {
                     value={userInputPhrase}
                     onChange={(e) => setUserInputPhrase(e.target.value)}
                     placeholder="Enter your secret phrase"
-                    className="w-full p-2 rounded bg-[#1a1a1a] border border-gray-800"
+                    className="w-full p-2 rounded bg-[var(--input-background)] border border-[var(--border-color)]"
                   />
                   <button 
                     className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -121,14 +121,14 @@ export default function Home() {
           {hasExistingPhrase && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <button 
-                className="flex items-center justify-center space-x-2 bg-[#1a1a1a] hover:bg-[#222222] p-4 rounded-lg border border-gray-800"
+                className="flex items-center justify-center space-x-2 bg-[var(--input-background)] hover:bg-[var(--hover-background)] p-4 rounded-lg border border-[var(--border-color)]"
                 onClick={() => router.push('/create-wallet')}
               >
                 <Image src="/images/solana-logo.svg" alt="Solana" width={24} height={24} />
                 <span>Create Solana Wallet</span>
               </button>
               <button 
-                className="flex items-center justify-center space-x-2 bg-[#1a1a1a] hover:bg-[#222222] p-4 rounded-lg border border-gray-800"
+                className="flex items-center justify-center space-x-2 bg-[var(--input-background)] hover:bg-[var(--hover-background)] p-4 rounded-lg border border-[var(--border-color)]"
                 onClick={() => router.push('/create-wallet')}
               >
                 <Image src="/images/ethereum-logo.svg" alt="Ethereum" width={24} height={24} />

@@ -2,12 +2,12 @@
   --background-primary: #ffffff;
   --background-secondary: #f5f5f5;
   --sidebar-background: #f0f0f0;
-  --text-primary: #000000;
+  --text-primary: #1a1a1a;
   --text-secondary: #4b5563;
   --border-color: #e5e7eb;
-  --input-background: #ffffff;
+  --input-background: #f8f9fa;
   --card-background: #ffffff;
-  --hover-background: #e5e7eb;
+  --hover-background: #f1f3f5;
   --button-background: #3b82f6;
   --button-hover: #2563eb;
 }
