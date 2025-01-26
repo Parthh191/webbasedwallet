@@ -2,6 +2,7 @@
 import { useWallet } from '@/contexts/WalletContext';
 import Image from 'next/image';
 import { useState } from 'react';
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline';
 
 export default function Wallets() {
   const { wallets } = useWallet();
@@ -66,9 +67,14 @@ export default function Wallets() {
                   </p>
                   <button
                     onClick={() => togglePrivateKey(wallet.id)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 px-3 py-1 text-sm bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+                    aria-label={showPrivateKey[wallet.id] ? 'Hide private key' : 'Show private key'}
                   >
-                    {showPrivateKey[wallet.id] ? 'Hide' : 'Show'}
+                    {showPrivateKey[wallet.id] ? (
+                      <EyeSlashIcon className="w-5 h-5" />
+                    ) : (
+                      <EyeIcon className="w-5 h-5" />
+                    )}
                   </button>
                 </div>
               </div>
